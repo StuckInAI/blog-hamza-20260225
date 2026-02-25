@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  blog:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=/app/database.sqlite
+    volumes:
+      - database_volume:/app/database.sqlite
+    restart: unless-stopped
+
+volumes:
+  database_volume:
